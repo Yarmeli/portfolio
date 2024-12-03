@@ -1,3 +1,4 @@
+import { anyone, authenticated } from '@/access'
 import type { CollectionConfig } from 'payload'
 
 export const Projects: CollectionConfig = {
@@ -6,7 +7,10 @@ export const Projects: CollectionConfig = {
     useAsTitle: 'title',
   },
   access: {
-    read: () => true, // Anyone can read projects
+    create: authenticated,
+    read: anyone,
+    update: authenticated,
+    delete: authenticated,
   },
   fields: [
     {
