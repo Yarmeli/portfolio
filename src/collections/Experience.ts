@@ -1,10 +1,10 @@
-import { anyone, authenticated } from '@/access'
-import type { CollectionConfig } from 'payload'
+import { anyone, authenticated } from "@/access";
+import type { CollectionConfig } from "payload";
 
 export const Experience: CollectionConfig = {
-  slug: 'experience',
+  slug: "experience",
   admin: {
-    useAsTitle: 'company',
+    useAsTitle: "company",
   },
   access: {
     create: authenticated,
@@ -14,42 +14,42 @@ export const Experience: CollectionConfig = {
   },
   fields: [
     {
-      name: 'company',
-      type: 'text',
+      name: "company",
+      type: "text",
       required: true,
     },
     {
-      name: 'position',
-      type: 'text',
+      name: "position",
+      type: "text",
       required: true,
     },
     {
-      name: 'startDate',
-      type: 'date',
+      name: "startDate",
+      type: "date",
       required: true,
     },
     {
-      name: 'endDate',
-      type: 'date',
+      name: "endDate",
+      type: "date",
       admin: {
-        description: 'Leave empty if this is your current position',
+        description: "Leave empty if this is your current position",
       },
     },
     {
-      name: 'current',
-      type: 'checkbox',
+      name: "current",
+      type: "checkbox",
       defaultValue: false,
     },
     {
-      name: 'description',
-      type: 'richText',
+      name: "description",
+      type: "richText",
       required: true,
     },
     {
-      name: 'technologies',
-      type: 'relationship',
-      relationTo: 'skills',
+      name: "technologies",
+      type: "relationship",
+      relationTo: "skills",
       hasMany: true,
     },
   ],
-}
+};

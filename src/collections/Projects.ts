@@ -1,10 +1,10 @@
-import { anyone, authenticated } from '@/access'
-import type { CollectionConfig } from 'payload'
+import { anyone, authenticated } from "@/access";
+import type { CollectionConfig } from "payload";
 
 export const Projects: CollectionConfig = {
-  slug: 'projects',
+  slug: "projects",
   admin: {
-    useAsTitle: 'title',
+    useAsTitle: "title",
   },
   access: {
     create: authenticated,
@@ -14,41 +14,41 @@ export const Projects: CollectionConfig = {
   },
   fields: [
     {
-      name: 'title',
-      type: 'text',
+      name: "title",
+      type: "text",
       required: true,
     },
     {
-      name: 'description',
-      type: 'richText',
+      name: "description",
+      type: "richText",
       required: true,
     },
     {
-      name: 'thumbnail',
-      type: 'upload',
-      relationTo: 'media',
+      name: "thumbnail",
+      type: "upload",
+      relationTo: "media",
       required: true,
     },
     {
-      name: 'projectUrl',
-      type: 'text',
-      label: 'Project URL',
+      name: "projectUrl",
+      type: "text",
+      label: "Project URL",
     },
     {
-      name: 'githubUrl',
-      type: 'text',
-      label: 'GitHub URL',
+      name: "githubUrl",
+      type: "text",
+      label: "GitHub URL",
     },
     {
-      name: 'technologies',
-      type: 'relationship',
-      relationTo: 'skills',
+      name: "technologies",
+      type: "relationship",
+      relationTo: "skills",
       hasMany: true,
     },
     {
-      name: 'featured',
-      type: 'checkbox',
+      name: "featured",
+      type: "checkbox",
       defaultValue: false,
     },
   ],
-}
+};

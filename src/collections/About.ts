@@ -1,10 +1,10 @@
-import { anyone, authenticated } from '@/access'
-import type { CollectionConfig } from 'payload'
+import { anyone, authenticated } from "@/access";
+import type { CollectionConfig } from "payload";
 
 export const About: CollectionConfig = {
-  slug: 'about',
+  slug: "about",
   admin: {
-    useAsTitle: 'name',
+    useAsTitle: "name",
   },
   access: {
     create: authenticated,
@@ -14,52 +14,52 @@ export const About: CollectionConfig = {
   },
   fields: [
     {
-      name: 'name',
-      type: 'text',
+      name: "name",
+      type: "text",
       required: true,
     },
     {
-      name: 'title',
-      type: 'text',
+      name: "title",
+      type: "text",
       required: true,
     },
     {
-      name: 'bio',
-      type: 'richText',
+      name: "bio",
+      type: "richText",
       required: true,
     },
     {
-      name: 'avatar',
-      type: 'upload',
-      relationTo: 'media',
+      name: "avatar",
+      type: "upload",
+      relationTo: "media",
     },
     {
-      name: 'location',
-      type: 'text',
+      name: "location",
+      type: "text",
     },
     {
-      name: 'email',
-      type: 'email',
+      name: "email",
+      type: "email",
     },
     {
-      name: 'socialLinks',
-      type: 'array',
+      name: "socialLinks",
+      type: "array",
       fields: [
         {
-          name: 'platform',
-          type: 'select',
+          name: "platform",
+          type: "select",
           options: [
-            { label: 'GitHub', value: 'github' },
-            { label: 'LinkedIn', value: 'linkedin' },
-            { label: 'Twitter', value: 'twitter' },
-            { label: 'Other', value: 'other' },
+            { label: "GitHub", value: "github" },
+            { label: "LinkedIn", value: "linkedin" },
+            { label: "Twitter", value: "twitter" },
+            { label: "Other", value: "other" },
           ],
         },
         {
-          name: 'url',
-          type: 'text',
+          name: "url",
+          type: "text",
         },
       ],
     },
   ],
-}
+};

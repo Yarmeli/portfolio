@@ -1,21 +1,20 @@
 // storage-adapter-import-placeholder
-import { postgresAdapter } from '@payloadcms/db-postgres'
-import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import path from 'path'
-import { buildConfig } from 'payload'
-import { fileURLToPath } from 'url'
-import sharp from 'sharp'
+import path from "path";
+import { fileURLToPath } from "url";
+import { postgresAdapter } from "@payloadcms/db-postgres";
+import { payloadCloudPlugin } from "@payloadcms/payload-cloud";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { buildConfig } from "payload";
+import sharp from "sharp";
+import { About } from "./collections/About";
+import { Experience } from "./collections/Experience";
+import { Media } from "./collections/Media";
+import { Projects } from "./collections/Projects";
+import { Skills } from "./collections/Skills";
+import { Users } from "./collections/Users";
 
-import { Users } from './collections/Users'
-import { Media } from './collections/Media'
-import { Projects } from './collections/Projects'
-import { Skills } from './collections/Skills'
-import { Experience } from './collections/Experience'
-import { About } from './collections/About'
-
-const filename = fileURLToPath(import.meta.url)
-const dirname = path.dirname(filename)
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
 
 export default buildConfig({
   admin: {
@@ -26,13 +25,13 @@ export default buildConfig({
   },
   collections: [Users, Media, Projects, Skills, Experience, About],
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || '',
+  secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
-    outputFile: path.resolve(dirname, 'payload-types.ts'),
+    outputFile: path.resolve(dirname, "payload-types.ts"),
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URI || '',
+      connectionString: process.env.DATABASE_URI || "",
     },
   }),
   sharp,
@@ -40,4 +39,4 @@ export default buildConfig({
     payloadCloudPlugin(),
     // storage-adapter-placeholder
   ],
-})
+});
