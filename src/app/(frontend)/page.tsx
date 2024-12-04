@@ -30,8 +30,8 @@ export default async function Home() {
   return (
     <div>
       <AboutSection about={about} />
-      <ExperienceSection experiences={experiences} />
       <SkillsSection skills={skills} />
+      <ExperienceSection experiences={experiences} />
       <FeaturedProjects projects={projects} />
     </div>
   );
