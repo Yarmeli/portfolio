@@ -1,6 +1,8 @@
-import { DefaultNodeTypes, SerializedBlockNode } from "@payloadcms/richtext-lexical";
+import { cn } from "@/lib/utils";
+import { DefaultNodeTypes } from "@payloadcms/richtext-lexical";
 import Link from "next/link";
 import React, { Fragment, JSX } from "react";
+import { v4 as uuidv4 } from "uuid";
 import {
   IS_BOLD,
   IS_CODE,
@@ -110,23 +112,33 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
             );
           }
           case "listitem": {
-            if (node?.checked != null) {
+            const hasSubLists = node.children.some((child) => child.type === "list");
+
+            if (node.checked !== undefined) {
+              const uuid = uuidv4();
+
               return (
                 <li
                   aria-checked={node.checked ? "true" : "false"}
-                  className={` ${node.checked ? "" : ""}`}
-                  key={index}
+                  className={cn("list-none outline-none", node.checked ? "line-through" : "")}
                   // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
                   role="checkbox"
                   tabIndex={-1}
                   value={node?.value}
                 >
-                  {serializedChildren}
+                  {hasSubLists ? (
+                    serializedChildren
+                  ) : (
+                    <div className="flex items-center gap-2">
+                      <input checked={node.checked} id={uuid} readOnly={true} type="checkbox" />
+                      <label htmlFor={uuid}>{serializedChildren}</label>
+                    </div>
+                  )}
                 </li>
               );
             } else {
               return (
-                <li key={index} value={node?.value}>
+                <li className={hasSubLists ? "list-none" : "list-inside"} value={node?.value}>
                   {serializedChildren}
                 </li>
               );
