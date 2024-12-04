@@ -161,6 +161,10 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
             );
           }
 
+          case "horizontalrule": {
+            return <hr className="col-start-2" key={index} />;
+          }
+
           default:
             return null;
         }
