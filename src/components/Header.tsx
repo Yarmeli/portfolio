@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -19,22 +20,25 @@ export function Header() {
         <Link href="/" className="text-xl font-bold">
           Portfolio
         </Link>
-        <div className="hidden md:block">
-          <div className="flex items-center gap-6">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={`text-sm ${
-                  pathname === item.href
-                    ? "font-medium text-primary"
-                    : "text-muted-foreground hover:text-primary"
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
+        <div className="flex items-center gap-6">
+          <div className="hidden md:block">
+            <div className="flex items-center gap-6">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`text-sm ${
+                    pathname === item.href
+                      ? "font-medium text-primary"
+                      : "text-muted-foreground hover:text-primary"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
           </div>
+          <ThemeToggle />
         </div>
       </nav>
     </header>
