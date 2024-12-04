@@ -197,6 +197,7 @@ export interface About {
   };
   avatar?: (number | null) | Media;
   location?: string | null;
+  locationFlag?: (number | null) | Media;
   email?: string | null;
   socialLinks?:
     | {
@@ -364,6 +365,7 @@ export interface AboutSelect<T extends boolean = true> {
   bio?: T;
   avatar?: T;
   location?: T;
+  locationFlag?: T;
   email?: T;
   socialLinks?:
     | T

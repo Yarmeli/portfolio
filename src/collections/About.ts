@@ -38,6 +38,11 @@ export const About: CollectionConfig = {
       type: "text",
     },
     {
+      name: "locationFlag",
+      type: "upload",
+      relationTo: "media",
+    },
+    {
       name: "email",
       type: "email",
     },
