@@ -150,6 +150,7 @@ export interface Skill {
 export interface Experience {
   id: number;
   company: string;
+  companyLogo: number | Media;
   position: string;
   startDate: string;
   endDate?: string | null;
@@ -347,6 +348,7 @@ export interface SkillsSelect<T extends boolean = true> {
  */
 export interface ExperienceSelect<T extends boolean = true> {
   company?: T;
+  companyLogo?: T;
   position?: T;
   startDate?: T;
   endDate?: T;
