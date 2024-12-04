@@ -36,11 +36,6 @@ export const Experience: CollectionConfig = {
       },
     },
     {
-      name: "current",
-      type: "checkbox",
-      defaultValue: false,
-    },
-    {
       name: "description",
       type: "richText",
       required: true,
