@@ -1,4 +1,5 @@
 import { Experience, Skill } from "@/payload-types";
+import RichText from "../RichText";
 
 interface ExperienceSectionProps {
   experiences: Experience[];
@@ -30,7 +31,7 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
               </div>
               <p className="mt-1 text-lg text-muted-foreground">{experience.company}</p>
               <div className="prose prose-sm mt-4 max-w-none">
-                {JSON.stringify(experience.description)}
+                <RichText className="mx-auto max-w-[48rem]" content={experience.description} />
               </div>
               {experience.technologies && (
                 <div className="mt-4 flex flex-wrap gap-2">

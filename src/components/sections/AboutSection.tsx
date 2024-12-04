@@ -1,4 +1,5 @@
 import { About, Media } from "@/payload-types";
+import RichText from "../RichText";
 
 interface AboutSectionProps {
   about: About;
@@ -16,7 +17,7 @@ export function AboutSection({ about }: AboutSectionProps) {
           </h1>
           <p className="mt-4 text-lg text-muted-foreground">{about.title}</p>
           <div className="prose prose-lg mt-6 text-muted-foreground">
-            <p>{JSON.stringify(about.bio)}</p>
+            <RichText className="mx-auto max-w-[48rem]" content={about.bio} />
           </div>
         </div>
         {avatar && avatar.url && (

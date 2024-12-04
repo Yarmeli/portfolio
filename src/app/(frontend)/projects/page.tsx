@@ -1,3 +1,4 @@
+import RichText from "@/components/RichText";
 import { Media, Project } from "@/payload-types";
 import configPromise from "@payload-config";
 import Link from "next/link";
@@ -34,7 +35,9 @@ export default async function ProjectsPage() {
               )}
               <div className="p-6">
                 <h2 className="text-2xl font-semibold">{project.title}</h2>
-                <div className="prose prose-sm mt-4">{JSON.stringify(project.description)}</div>
+                <div className="prose prose-sm mt-4">
+                  <RichText className="mx-auto max-w-[48rem]" content={project.description} />
+                </div>
                 <div className="mt-6 flex gap-4">
                   {project.projectUrl && (
                     <Link
