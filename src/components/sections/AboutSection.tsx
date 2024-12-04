@@ -23,13 +23,13 @@ export function AboutSection({ about }: AboutSectionProps) {
           <h1 className="text-4xl font-bold tracking-tight">{about.name}</h1>
         </div>
         <div className="mb-6 flex items-center gap-2">
-          <span className="text-lg text-muted-foreground">Based in {about.location}</span>
           {locationFlag && locationFlag.url && (
             <Avatar className="h-6 w-12 rounded-sm">
               <AvatarImage src={locationFlag.url} alt={locationFlag.alt} />
               <AvatarFallback>{locationFlag.alt}</AvatarFallback>
             </Avatar>
-          )}
+          )}{" "}
+          <span className="text-lg text-muted-foreground">Based in {about.location}</span>
         </div>
         <h2 className="mb-8 text-5xl font-bold tracking-tight sm:text-7xl">{about.title}</h2>
         <div className="prose prose-lg max-w-[48rem] text-muted-foreground">
