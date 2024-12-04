@@ -11,8 +11,8 @@ export function AboutSection({ about }: AboutSectionProps) {
   const locationFlag = about?.locationFlag as Media;
 
   return (
-    <section className="container mx-auto px-4 py-24 sm:py-32" id="about">
-      <div className="flex flex-col items-center">
+    <section className="py-24 sm:py-32" id="about">
+      <div className="mx-auto flex max-w-6xl flex-col items-center px-4">
         {avatar && avatar.url && (
           <Avatar className="mb-6 h-32 w-32">
             <AvatarImage src={avatar.url} alt={avatar.alt} />

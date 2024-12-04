@@ -8,7 +8,7 @@ interface ExperienceSectionProps {
 export function ExperienceSection({ experiences }: ExperienceSectionProps) {
   return (
     <section className="py-24 sm:py-32" id="experience">
-      <div className="container mx-auto px-4">
+      <div className="mx-auto max-w-6xl px-4">
         <h2 className="mb-12 text-3xl font-bold">Experience</h2>
         <div className="space-y-8">
           {experiences.map((experience) => {

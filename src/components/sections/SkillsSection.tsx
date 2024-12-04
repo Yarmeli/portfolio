@@ -9,7 +9,6 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
 
   return (
     <section className="bg-secondary/50 py-24 sm:py-32" id="skills">
-      <div className="container mx-auto px-4">
         <h2 className="mb-12 text-3xl font-bold">Skills</h2>
         <div className="space-y-12">
           {categories.map((category) => (
@@ -29,6 +28,7 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
                       </div>
                     );
                   })}
+      <div className="mx-auto max-w-6xl px-4">
               </div>
             </div>
           ))}
