@@ -1,5 +1,6 @@
-import { Experience, Skill } from "@/payload-types";
+import { Experience, Media } from "@/payload-types";
 import RichText from "../RichText";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 interface ExperienceSectionProps {
   experiences: Experience[];
@@ -10,43 +11,49 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
     <section className="py-24 sm:py-32" id="experience">
       <div className="mx-auto max-w-6xl px-4">
         <h2 className="mb-12 text-3xl font-bold">Experience</h2>
-        <div className="space-y-8">
-          {experiences.map((experience) => {
-            const technologies = experience.technologies as Skill[];
-            return (
-              <div key={experience.id} className="rounded-lg border bg-background p-6">
-                <div className="flex flex-wrap items-center justify-between gap-4">
-                  <h3 className="text-xl font-semibold">{experience.position}</h3>
-                  <p className="text-sm text-muted-foreground">
-                    {new Date(experience.startDate).toLocaleDateString("en-GB", {
-                      month: "long",
-                      year: "numeric",
-                    })}{" "}
-                    -{" "}
-                    {experience.endDate
-                      ? new Date(experience.endDate).toLocaleDateString("en-GB", {
-                          month: "long",
-                          year: "numeric",
-                        })
-                      : "Present"}
-                  </p>
-                </div>
-                <p className="mt-1 text-lg text-muted-foreground">{experience.company}</p>
-                <div className="prose prose-sm mt-4 max-w-none">
-                  <RichText className="mx-auto max-w-[48rem]" content={experience.description} />
-                </div>
-                {technologies && (
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {technologies.map((tech) => (
-                      <span key={tech.id} className="rounded-full bg-secondary px-3 py-1 text-sm">
-                        {tech.name}
-                      </span>
-                    ))}
+        <div className="relative">
+          <div className="absolute left-8 top-0 h-full w-px bg-border" />
+          <div className="space-y-12">
+            {experiences.map((experience) => {
+              const logo = experience.companyLogo as Media;
+              return (
+                <div key={experience.id} className="relative flex gap-8">
+                  <div className="relative z-10">
+                    <Avatar className="h-16 w-16 rounded-2xl border bg-background">
+                      {logo && logo.url ? (
+                        <AvatarImage src={logo.url} alt={experience.company} />
+                      ) : (
+                        <AvatarFallback className="rounded-2xl">
+                          {experience.company}
+                        </AvatarFallback>
+                      )}
+                    </Avatar>
                   </div>
-                )}
-              </div>
-            );
-          })}
+
+                  <div className="flex-1">
+                    <div className="mb-1 text-sm text-muted-foreground">
+                      {new Date(experience.startDate).toLocaleDateString("en-GB", {
+                        month: "short",
+                        year: "numeric",
+                      })}
+                      {" - "}
+                      {experience.endDate
+                        ? new Date(experience.endDate).toLocaleDateString("en-GB", {
+                            month: "short",
+                            year: "numeric",
+                          })
+                        : "Present"}
+                    </div>
+                    <h3 className="font-semibold">{experience.position}</h3>
+                    <p className="text-muted-foreground">{experience.company}</p>
+                    <div className="mt-2 text-sm text-muted-foreground">
+                      <RichText content={experience.description} enableGutter={false} />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

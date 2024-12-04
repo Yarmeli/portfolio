@@ -17,6 +17,8 @@ export const Experience: CollectionConfig = {
       name: "company",
       type: "text",
       required: true,
+      label: "Company Name (e.g. 'Working at...')",
+    },
     {
       name: "companyLogo",
       type: "relationship",
