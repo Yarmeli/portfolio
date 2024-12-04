@@ -17,9 +17,9 @@ export interface Config {
     skills: Skill;
     experience: Experience;
     about: About;
-    "payload-locked-documents": PayloadLockedDocument;
-    "payload-preferences": PayloadPreference;
-    "payload-migrations": PayloadMigration;
+    'payload-locked-documents': PayloadLockedDocument;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
   };
   collectionsJoins: {};
   collectionsSelect: {
@@ -29,11 +29,9 @@ export interface Config {
     skills: SkillsSelect<false> | SkillsSelect<true>;
     experience: ExperienceSelect<false> | ExperienceSelect<true>;
     about: AboutSelect<false> | AboutSelect<true>;
-    "payload-locked-documents":
-      | PayloadLockedDocumentsSelect<false>
-      | PayloadLockedDocumentsSelect<true>;
-    "payload-preferences": PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
-    "payload-migrations": PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
+    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
+    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
+    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
     defaultIDType: number;
@@ -42,7 +40,7 @@ export interface Config {
   globalsSelect: {};
   locale: null;
   user: User & {
-    collection: "users";
+    collection: 'users';
   };
   jobs: {
     tasks: unknown;
@@ -118,8 +116,8 @@ export interface Project {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -141,7 +139,7 @@ export interface Skill {
   id: number;
   name: string;
   icon: number | Media;
-  category: "frontend" | "backend" | "programming" | "devops" | "testing" | "languages";
+  category: 'frontend' | 'backend' | 'programming' | 'devops' | 'testing' | 'languages';
   updatedAt: string;
   createdAt: string;
 }
@@ -155,7 +153,6 @@ export interface Experience {
   position: string;
   startDate: string;
   endDate?: string | null;
-  current?: boolean | null;
   description: {
     root: {
       type: string;
@@ -164,8 +161,8 @@ export interface Experience {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -191,8 +188,8 @@ export interface About {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -203,7 +200,7 @@ export interface About {
   email?: string | null;
   socialLinks?:
     | {
-        platform?: ("github" | "linkedin" | "twitter" | "other") | null;
+        platform?: ('github' | 'linkedin' | 'twitter' | 'other') | null;
         url?: string | null;
         id?: string | null;
       }[]
@@ -219,32 +216,32 @@ export interface PayloadLockedDocument {
   id: number;
   document?:
     | ({
-        relationTo: "users";
+        relationTo: 'users';
         value: number | User;
       } | null)
     | ({
-        relationTo: "media";
+        relationTo: 'media';
         value: number | Media;
       } | null)
     | ({
-        relationTo: "projects";
+        relationTo: 'projects';
         value: number | Project;
       } | null)
     | ({
-        relationTo: "skills";
+        relationTo: 'skills';
         value: number | Skill;
       } | null)
     | ({
-        relationTo: "experience";
+        relationTo: 'experience';
         value: number | Experience;
       } | null)
     | ({
-        relationTo: "about";
+        relationTo: 'about';
         value: number | About;
       } | null);
   globalSlug?: string | null;
   user: {
-    relationTo: "users";
+    relationTo: 'users';
     value: number | User;
   };
   updatedAt: string;
@@ -257,7 +254,7 @@ export interface PayloadLockedDocument {
 export interface PayloadPreference {
   id: number;
   user: {
-    relationTo: "users";
+    relationTo: 'users';
     value: number | User;
   };
   key?: string | null;
@@ -352,7 +349,6 @@ export interface ExperienceSelect<T extends boolean = true> {
   position?: T;
   startDate?: T;
   endDate?: T;
-  current?: T;
   description?: T;
   technologies?: T;
   updatedAt?: T;
@@ -419,6 +415,7 @@ export interface Auth {
   [k: string]: unknown;
 }
 
-declare module "payload" {
+
+declare module 'payload' {
   export interface GeneratedTypes extends Config {}
 }
