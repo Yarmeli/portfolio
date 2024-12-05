@@ -40,44 +40,50 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
                 variants={fadeIn}
                 className="group relative overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm"
               >
-                <div className="p-2">
-                  {thumbnail && thumbnail.url && (
-                    <img
-                      src={thumbnail.url}
-                      alt={project.title}
-                      className="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                  )}
-                </div>
-                <div className="p-4">
-                  <h3 className="font-semibold">{project.title}</h3>
-                  <div className="mt-4 flex gap-2">
-                    {project.technologies?.map((technology) => {
-                      const skill = technology as Skill;
-                      return <Badge key={skill.id}>{skill.name}</Badge>;
-                    })}
-                  </div>
-                  <div className="mt-4 flex gap-2">
-                    {project.projectUrl && (
-                      <Link
-                        href={project.projectUrl}
-                        target="_blank"
-                        className="text-sm text-primary hover:underline"
-                      >
-                        Live Demo
-                      </Link>
-                    )}
-                    {project.githubUrl && (
-                      <Link
-                        href={project.githubUrl}
-                        target="_blank"
-                        className="text-sm text-primary hover:underline"
-                      >
-                        GitHub
-                      </Link>
+                <Link href={`/projects/${project.id}`} key={project.id}>
+                  <div className="p-2">
+                    {thumbnail && thumbnail.url && (
+                      <img
+                        src={thumbnail.url}
+                        alt={project.title}
+                        className="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
                     )}
                   </div>
-                </div>
+                  <div className="p-4">
+                    <h3 className="font-semibold">{project.title}</h3>
+
+                    <p className="mt-4 text-center text-sm text-muted-foreground">
+                      {project.shortDescription}
+                    </p>
+                    <div className="mt-4 flex gap-2">
+                      {project.technologies?.map((technology) => {
+                        const skill = technology as Skill;
+                        return <Badge key={skill.id}>{skill.name}</Badge>;
+                      })}
+                    </div>
+                    <div className="mt-4 flex gap-2">
+                      {project.projectUrl && (
+                        <Link
+                          href={project.projectUrl}
+                          target="_blank"
+                          className="text-sm text-primary hover:underline"
+                        >
+                          Live Demo
+                        </Link>
+                      )}
+                      {project.githubUrl && (
+                        <Link
+                          href={project.githubUrl}
+                          target="_blank"
+                          className="text-sm text-primary hover:underline"
+                        >
+                          GitHub
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                </Link>
               </MotionWrapper>
             );
           })}
