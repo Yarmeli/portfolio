@@ -7,8 +7,8 @@ import { ThemeToggle } from "./ThemeToggle";
 const navigation = [
   { name: "Home", href: "/" },
   { name: "Projects", href: "/projects" },
-  { name: "Experience", href: "/#experience" },
   { name: "Skills", href: "/#skills" },
+  { name: "Experience", href: "/#experience" },
 ];
 
 export function Header() {
