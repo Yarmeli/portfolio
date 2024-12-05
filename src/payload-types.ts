@@ -108,6 +108,7 @@ export interface Media {
 export interface Project {
   id: number;
   title: string;
+  shortDescription?: string | null;
   description: {
     root: {
       type: string;
@@ -322,6 +323,7 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface ProjectsSelect<T extends boolean = true> {
   title?: T;
+  shortDescription?: T;
   description?: T;
   thumbnail?: T;
   projectUrl?: T;
