@@ -12,20 +12,18 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
       <div className="mx-auto max-w-6xl px-4">
         <h2 className="mb-12 text-3xl font-bold">Experience</h2>
         <div className="relative">
-          <div className="absolute left-8 top-0 h-full w-px bg-border" />
+          <div className="absolute left-8 top-0 h-full w-px bg-black/50 dark:bg-white/50" />
           <div className="space-y-12">
             {experiences.map((experience) => {
               const logo = experience.companyLogo as Media;
               return (
                 <div key={experience.id} className="relative flex gap-8">
                   <div className="relative z-10">
-                    <Avatar className="h-16 w-16 rounded-2xl border bg-background">
+                    <Avatar className="h-16 w-16 rounded-sm border bg-background">
                       {logo && logo.url ? (
                         <AvatarImage src={logo.url} alt={experience.company} />
                       ) : (
-                        <AvatarFallback className="rounded-2xl">
-                          {experience.company}
-                        </AvatarFallback>
+                        <AvatarFallback className="rounded-sm">{experience.company}</AvatarFallback>
                       )}
                     </Avatar>
                   </div>
