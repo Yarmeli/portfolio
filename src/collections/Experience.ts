@@ -21,7 +21,7 @@ export const Experience: CollectionConfig = {
     },
     {
       name: "companyLogo",
-      type: "relationship",
+      type: "upload",
       relationTo: "media",
       required: true,
     },
