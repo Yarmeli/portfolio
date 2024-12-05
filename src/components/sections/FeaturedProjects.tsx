@@ -1,5 +1,7 @@
+import { fadeIn, staggerContainer } from "@/lib/animations";
 import { Media, Project, Skill } from "@/payload-types";
 import Link from "next/link";
+import { MotionWrapper } from "../MotionWrapper";
 import { Badge } from "../ui/badge";
 
 interface FeaturedProjectsProps {
@@ -10,18 +12,32 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
   return (
     <section className="bg-secondary/50 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="flex items-center justify-between">
+        <MotionWrapper
+          variants={fadeIn}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex items-center justify-between"
+        >
           <h2 className="text-3xl font-bold">Featured Projects</h2>
           <Link href="/projects" className="text-sm font-medium text-primary hover:underline">
             View all projects
           </Link>
-        </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        </MotionWrapper>
+
+        <MotionWrapper
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        >
           {projects.map((project) => {
             const thumbnail = project.thumbnail as Media;
             return (
-              <div
+              <MotionWrapper
                 key={project.id}
+                variants={fadeIn}
                 className="group relative overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm"
               >
                 <div className="p-2">
@@ -62,10 +78,10 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
                     )}
                   </div>
                 </div>
-              </div>
+              </MotionWrapper>
             );
           })}
-        </div>
+        </MotionWrapper>
       </div>
     </section>
   );

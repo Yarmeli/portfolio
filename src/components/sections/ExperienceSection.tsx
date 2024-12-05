@@ -1,4 +1,6 @@
+import { fadeIn, slideIn, staggerContainer } from "@/lib/animations";
 import { Experience, Media } from "@/payload-types";
+import { MotionWrapper } from "../MotionWrapper";
 import RichText from "../RichText";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
@@ -10,14 +12,32 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
   return (
     <section className="py-24 sm:py-32" id="experience">
       <div className="mx-auto max-w-6xl px-4">
-        <h2 className="mb-12 text-3xl font-bold">Experience</h2>
+        <MotionWrapper
+          variants={fadeIn}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <h2 className="mb-12 text-3xl font-bold">Experience</h2>
+        </MotionWrapper>
+
         <div className="relative">
           <div className="absolute left-8 top-0 h-full w-px bg-black/50 dark:bg-white/50" />
-          <div className="space-y-12">
+          <MotionWrapper
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="space-y-12"
+          >
             {experiences.map((experience) => {
               const logo = experience.companyLogo as Media;
               return (
-                <div key={experience.id} className="relative flex gap-8">
+                <MotionWrapper
+                  key={experience.id}
+                  variants={slideIn}
+                  className="relative flex gap-8"
+                >
                   <div className="relative z-10">
                     <Avatar className="h-16 w-16 rounded-sm border bg-background">
                       {logo && logo.url ? (
@@ -48,10 +68,10 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
                       <RichText content={experience.description} enableGutter={false} />
                     </div>
                   </div>
-                </div>
+                </MotionWrapper>
               );
             })}
-          </div>
+          </MotionWrapper>
         </div>
       </div>
     </section>

@@ -1,4 +1,6 @@
+import { fadeIn } from "@/lib/animations";
 import { About, Media } from "@/payload-types";
+import { MotionWrapper } from "../MotionWrapper";
 import RichText from "../RichText";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
@@ -12,7 +14,13 @@ export function AboutSection({ about }: AboutSectionProps) {
 
   return (
     <section className="py-24 sm:py-32" id="about">
-      <div className="mx-auto flex max-w-6xl flex-col items-center px-4">
+      <MotionWrapper
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="mx-auto flex max-w-6xl flex-col items-center px-4"
+      >
         {avatar && avatar.url && (
           <Avatar className="mb-6 h-32 w-32">
             <AvatarImage src={avatar.url} alt={avatar.alt} />
@@ -35,7 +43,7 @@ export function AboutSection({ about }: AboutSectionProps) {
         <div className="prose prose-lg max-w-[48rem] text-muted-foreground">
           <RichText content={about.bio} />
         </div>
-      </div>
+      </MotionWrapper>
     </section>
   );
 }
