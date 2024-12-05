@@ -1,5 +1,6 @@
-import { Media, Project } from "@/payload-types";
+import { Media, Project, Skill } from "@/payload-types";
 import Link from "next/link";
+import { Badge } from "../ui/badge";
 
 interface FeaturedProjectsProps {
   projects: Project[];
@@ -21,16 +22,27 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
           {featuredProjects.map((project) => {
             const thumbnail = project.thumbnail as Media;
             return (
-              <div key={project.id} className="group relative overflow-hidden rounded-lg border">
-                {thumbnail && thumbnail.url && (
-                  <img
-                    src={thumbnail.url}
-                    alt={project.title}
-                    className="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                )}
+              <div
+                key={project.id}
+                className="group relative overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm"
+              >
+                <div className="p-2">
+                  {thumbnail && thumbnail.url && (
+                    <img
+                      src={thumbnail.url}
+                      alt={project.title}
+                      className="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  )}
+                </div>
                 <div className="p-4">
                   <h3 className="font-semibold">{project.title}</h3>
+                  <div className="mt-4 flex gap-2">
+                    {project.technologies?.map((technology) => {
+                      const skill = technology as Skill;
+                      return <Badge key={skill.id}>{skill.name}</Badge>;
+                    })}
+                  </div>
                   <div className="mt-4 flex gap-2">
                     {project.projectUrl && (
                       <Link
