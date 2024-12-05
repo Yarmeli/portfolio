@@ -7,8 +7,6 @@ interface FeaturedProjectsProps {
 }
 
 export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
-  const featuredProjects = projects.filter((project) => project.featured);
-
   return (
     <section className="bg-secondary/50 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-4">
@@ -19,7 +17,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
           </Link>
         </div>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {featuredProjects.map((project) => {
+          {projects.map((project) => {
             const thumbnail = project.thumbnail as Media;
             return (
               <div

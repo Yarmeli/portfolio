@@ -13,7 +13,11 @@ async function getHomeData() {
     payload.find({ collection: "about", limit: 1 }),
     payload.find({ collection: "experience", sort: "-startDate" }),
     payload.find({ collection: "skills" }),
-    payload.find({ collection: "projects", sort: "-createdAt" }),
+    payload.find({
+      collection: "projects",
+      sort: "-createdAt",
+      where: { featured: { equals: true } },
+    }),
   ]);
 
   return {
