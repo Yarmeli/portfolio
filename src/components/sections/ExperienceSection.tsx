@@ -1,4 +1,4 @@
-import { fadeIn, slideIn, staggerContainer } from "@/lib/animations";
+import { fadeIn, slideIn } from "@/lib/animations";
 import { Experience, Media } from "@/payload-types";
 import { MotionWrapper } from "../MotionWrapper";
 import RichText from "../RichText";
@@ -24,7 +24,7 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
         <div className="relative">
           <div className="absolute left-8 top-0 h-full w-px bg-black/50 dark:bg-white/50" />
           <MotionWrapper
-            variants={staggerContainer}
+            variants={fadeIn}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
