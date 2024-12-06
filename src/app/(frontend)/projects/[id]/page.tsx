@@ -30,7 +30,7 @@ async function getProject(id: string) {
 export async function generateMetadata({ params }: { params: { id: string } }) {
   const { id } = await params;
   const project = await getProject(id);
-  return { title: project?.title, description: project?.shortDescription };
+  return { title: `Hamza Asif • ${project?.title}`, description: project?.shortDescription };
 }
 
 export default async function ProjectPage({ params }: { params: { id: string } }) {

@@ -1,12 +1,13 @@
 import { Badge } from "@/components/ui/badge";
 import { Media, Project, Skill } from "@/payload-types";
 import configPromise from "@payload-config";
+import { Metadata } from "next";
 import Link from "next/link";
 import { getPayload } from "payload";
 
-export async function generateMetadata() {
-  return { title: "All My Projects", description: "A list of projects I've worked on" };
-}
+export const metadata: Metadata = {
+  title: "Hamza Asif • Projects",
+};
 
 async function getProjects() {
   const payload = await getPayload({ config: configPromise });
