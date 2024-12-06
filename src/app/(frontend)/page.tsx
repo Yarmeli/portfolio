@@ -6,6 +6,13 @@ import { About, Experience, Project, Skill } from "@/payload-types";
 import configPromise from "@payload-config";
 import { getPayload } from "payload";
 
+export async function generateMetadata() {
+  return {
+    title: "Hamza Asif - Full Stack Developer",
+    description: "A portfolio website to showcase my projects and skills",
+  };
+}
+
 async function getHomeData() {
   const payload = await getPayload({ config: configPromise });
 

@@ -4,6 +4,10 @@ import configPromise from "@payload-config";
 import Link from "next/link";
 import { getPayload } from "payload";
 
+export async function generateMetadata() {
+  return { title: "Projects", description: "A list of projects I've worked on" };
+}
+
 async function getProjects() {
   const payload = await getPayload({ config: configPromise });
   const projects = await payload.find({

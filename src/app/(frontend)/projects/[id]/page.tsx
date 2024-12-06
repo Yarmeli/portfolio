@@ -24,6 +24,12 @@ async function getProject(id: string) {
   return projects.docs[0] as Project;
 }
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const { id } = await params;
+  const project = await getProject(id);
+  return { title: project?.title, description: project?.shortDescription };
+}
+
 export default async function ProjectPage({ params }: { params: { id: string } }) {
   const project = await getProject(params.id);
 
