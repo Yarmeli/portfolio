@@ -1,5 +1,8 @@
+import { ImageGallery } from "@/components/ImageGallery";
+import { MotionWrapper } from "@/components/MotionWrapper";
 import RichText from "@/components/RichText";
 import { Badge } from "@/components/ui/badge";
+import { staggerChildren, staggerContainer } from "@/lib/animations";
 import { Media, Project, Skill } from "@/payload-types";
 import configPromise from "@payload-config";
 import Link from "next/link";
@@ -31,34 +34,63 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 }
 
 export default async function ProjectPage({ params }: { params: { id: string } }) {
-  const project = await getProject(params.id);
+  // Next 15 requires to await params
+  const { id } = await params;
+  const project = await getProject(id);
 
   if (!project) {
     notFound();
   }
 
   const thumbnail = project.thumbnail as Media;
+  const images = project.images as Media[];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16">
-      <Link
-        href="/projects"
-        className="mb-8 inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
-      >
-        ← Back to Projects
-      </Link>
+    <div className="container mx-auto px-4 py-16">
+      <article className="mx-auto max-w-4xl">
+        <Link
+          href="/projects"
+          className="mb-8 inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
+        >
+          ← Back to Projects
+        </Link>
+        {/* Project Header */}
+        <MotionWrapper
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="mb-12"
+        >
+          <MotionWrapper variants={staggerChildren}>
+            <h1 className="mb-6 text-4xl font-bold">{project.title}</h1>
+          </MotionWrapper>
+          <MotionWrapper variants={staggerChildren}>
+            {/* Technologies */}
+            <div className="mb-6 flex flex-wrap gap-2">
+              {project.technologies?.map((technology) => {
+                const skill = technology as Skill;
+                return (
+                  <Badge key={`skill-project-${skill.id}`} className="px-3 py-1 text-sm">
+                    {skill.name}
+                  </Badge>
+                );
+              })}
+            </div>
+          </MotionWrapper>
 
-      <article className="flex w-full flex-col">
+          <MotionWrapper variants={staggerChildren}>
+            {/* Short Description */}
+            <p className="text-lg">{project.shortDescription}</p>
+          </MotionWrapper>
+        </MotionWrapper>
+
+        {/* Image Gallery */}
         {thumbnail && thumbnail.url && (
-          <div className="relative mb-8 h-[400px] overflow-hidden rounded-lg">
-            <img src={thumbnail.url} alt={project.title} className="h-full w-full object-cover" />
-          </div>
+          <ImageGallery thumbnail={thumbnail} images={images || []} title={project.title} />
         )}
 
-        <h1 className="mb-6 text-4xl font-bold">{project.title}</h1>
-
-        <p className="mt-2 text-sm text-muted-foreground">{project.shortDescription}</p>
-
+        {/* Project Content */}
         <div className="mt-2">
           <RichText content={project.description} enableGutter={false} />
         </div>
@@ -82,13 +114,6 @@ export default async function ProjectPage({ params }: { params: { id: string } }
               View Code
             </Link>
           )}
-        </div>
-        <h3 className="text-lg font-semibold">Technologies:</h3>
-        <div className="mt-8 flex gap-4">
-          {project.technologies?.map((technology) => {
-            const skill = technology as Skill;
-            return <Badge key={skill.id}>{skill.name}</Badge>;
-          })}
         </div>
       </article>
     </div>
