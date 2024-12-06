@@ -38,7 +38,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
               <MotionWrapper
                 key={`project-featured-${project.id}`}
                 variants={fadeIn}
-                className="group relative overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm"
+                className="group relative overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm hover:bg-card/80"
               >
                 <Link href={`/projects/${project.id}`}>
                   <div className="p-2">
