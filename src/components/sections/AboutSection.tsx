@@ -40,8 +40,8 @@ export function AboutSection({ about }: AboutSectionProps) {
           <span className="text-lg text-muted-foreground">Based in {about.location}</span>
         </div>
         <h2 className="mb-8 text-5xl font-bold tracking-tight sm:text-7xl">{about.title}</h2>
-        <div className="prose prose-lg max-w-[48rem] text-muted-foreground">
-          <RichText content={about.bio} />
+        <div className="mt-2 text-sm text-muted-foreground">
+          <RichText content={about.bio} enableGutter={false} />
         </div>
       </MotionWrapper>
     </section>
