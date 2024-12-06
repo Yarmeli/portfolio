@@ -5,7 +5,7 @@ import Link from "next/link";
 import { getPayload } from "payload";
 
 export async function generateMetadata() {
-  return { title: "Projects", description: "A list of projects I've worked on" };
+  return { title: "All My Projects", description: "A list of projects I've worked on" };
 }
 
 async function getProjects() {
