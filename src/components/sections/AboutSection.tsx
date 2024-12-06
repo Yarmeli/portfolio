@@ -2,6 +2,7 @@ import { fadeIn } from "@/lib/animations";
 import { About, Media } from "@/payload-types";
 import { MotionWrapper } from "../MotionWrapper";
 import RichText from "../RichText";
+import { SocialLink } from "../SocialLink";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 interface AboutSectionProps {
@@ -42,6 +43,11 @@ export function AboutSection({ about }: AboutSectionProps) {
         <h2 className="mb-8 text-5xl font-bold tracking-tight sm:text-7xl">{about.title}</h2>
         <div className="mt-2 text-sm text-muted-foreground">
           <RichText content={about.bio} enableGutter={false} />
+        </div>
+        <div className="mt-6 flex flex-wrap gap-4">
+          {about.socialLinks?.map((socialLink) => (
+            <SocialLink key={`social-link-${socialLink.id}`} socialLink={socialLink} />
+          ))}
         </div>
       </MotionWrapper>
     </section>
