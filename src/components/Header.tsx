@@ -20,7 +20,7 @@ export function Header() {
         <div className="flex items-center gap-6">
           {navigation.map((item) => (
             <Link
-              key={item.name}
+              key={`nav-${item.name}`}
               href={item.href}
               className={`text-sm ${
                 pathname === item.href

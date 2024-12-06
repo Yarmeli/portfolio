@@ -36,11 +36,11 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
             const thumbnail = project.thumbnail as Media;
             return (
               <MotionWrapper
-                key={project.id}
+                key={`project-featured-${project.id}`}
                 variants={fadeIn}
                 className="group relative overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm"
               >
-                <Link href={`/projects/${project.id}`} key={project.id}>
+                <Link href={`/projects/${project.id}`}>
                   <div className="p-2">
                     {thumbnail && thumbnail.url && (
                       <img
@@ -59,7 +59,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
                     <div className="mt-4 flex gap-2">
                       {project.technologies?.map((technology) => {
                         const skill = technology as Skill;
-                        return <Badge key={skill.id}>{skill.name}</Badge>;
+                        return <Badge key={`skill-featured-${skill.id}`}>{skill.name}</Badge>;
                       })}
                     </div>
                     <div className="mt-4 flex gap-2">

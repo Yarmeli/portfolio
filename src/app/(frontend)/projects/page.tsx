@@ -29,7 +29,7 @@ export default async function ProjectsPage() {
           return (
             <Link
               href={`/projects/${project.id}`}
-              key={project.id}
+              key={`project-${project.id}`}
               className="group flex items-center gap-6 rounded-lg border p-4 transition-colors hover:bg-muted"
             >
               {thumbnail && thumbnail.url && (
@@ -49,7 +49,7 @@ export default async function ProjectsPage() {
                 <div className="mt-4 flex gap-2">
                   {project.technologies?.map((technology) => {
                     const skill = technology as Skill;
-                    return <Badge key={skill.id}>{skill.name}</Badge>;
+                    return <Badge key={`skill-projects-${skill.id}`}>{skill.name}</Badge>;
                   })}
                 </div>
               </div>

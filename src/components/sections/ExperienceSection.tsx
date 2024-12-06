@@ -34,7 +34,7 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
               const logo = experience.companyLogo as Media;
               return (
                 <MotionWrapper
-                  key={experience.id}
+                  key={`experience-${experience.id}`}
                   variants={slideIn}
                   className="relative flex gap-8"
                 >

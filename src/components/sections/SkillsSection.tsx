@@ -31,7 +31,7 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
             const icon = skill.icon as Media;
             return (
               <MotionWrapper
-                key={skill.id}
+                key={`skill-${skill.id}`}
                 variants={fadeIn}
                 className="flex flex-col items-center justify-center gap-2 rounded-lg p-4 transition-colors hover:bg-secondary/50"
               >
