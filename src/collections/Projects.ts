@@ -36,6 +36,12 @@ export const Projects: CollectionConfig = {
       required: true,
     },
     {
+      name: "images",
+      type: "upload",
+      relationTo: "media",
+      hasMany: true,
+    },
+    {
       name: "projectUrl",
       type: "text",
       label: "Project URL",

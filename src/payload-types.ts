@@ -125,6 +125,7 @@ export interface Project {
     [k: string]: unknown;
   };
   thumbnail: number | Media;
+  images?: (number | Media)[] | null;
   projectUrl?: string | null;
   githubUrl?: string | null;
   technologies?: (number | Skill)[] | null;
@@ -326,6 +327,7 @@ export interface ProjectsSelect<T extends boolean = true> {
   shortDescription?: T;
   description?: T;
   thumbnail?: T;
+  images?: T;
   projectUrl?: T;
   githubUrl?: T;
   technologies?: T;
