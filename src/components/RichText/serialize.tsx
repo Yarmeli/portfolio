@@ -37,14 +37,14 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           }
           if (node.format & IS_STRIKETHROUGH) {
             text = (
-              <span key={`text-${index}`} style={{ textDecoration: "line-through" }}>
+              <span key={`text-${index}`} className="line-through">
                 {text}
               </span>
             );
           }
           if (node.format & IS_UNDERLINE) {
             text = (
-              <span key={`text-${index}`} style={{ textDecoration: "underline" }}>
+              <span key={`text-${index}`} className="underline">
                 {text}
               </span>
             );
@@ -90,7 +90,15 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           }
           case "paragraph": {
             return (
-              <p className="col-start-2" key={`text-${index}`}>
+              <p
+                className={cn("col-start-2", {
+                  "text-left": node.format === "left",
+                  "text-center": node.format === "center",
+                  "text-right": node.format === "right",
+                  "text-justify": node.format === "justify",
+                })}
+                key={`text-${index}`}
+              >
                 {serializedChildren}
               </p>
             );
@@ -98,7 +106,15 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           case "heading": {
             const Tag = node?.tag;
             return (
-              <Tag className="col-start-2" key={`text-${index}`}>
+              <Tag
+                className={cn("col-start-2", {
+                  "text-left": node.format === "left",
+                  "text-center": node.format === "center",
+                  "text-right": node.format === "right",
+                  "text-justify": node.format === "justify",
+                })}
+                key={`text-${index}`}
+              >
                 {serializedChildren}
               </Tag>
             );
@@ -106,7 +122,15 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           case "list": {
             const Tag = node?.tag;
             return (
-              <Tag className="list col-start-2" key={`text-${index}`}>
+              <Tag
+                className={cn("list col-start-2", {
+                  "text-left": node.format === "left",
+                  "text-center": node.format === "center",
+                  "text-right": node.format === "right",
+                  "text-justify": node.format === "justify",
+                })}
+                key={`text-${index}`}
+              >
                 {serializedChildren}
               </Tag>
             );
@@ -120,7 +144,12 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
               return (
                 <li
                   aria-checked={node.checked ? "true" : "false"}
-                  className={cn("list-none outline-none", node.checked ? "line-through" : "")}
+                  className={cn("list-none outline-none", node.checked ? "line-through" : "", {
+                    "text-left": node.format === "left",
+                    "text-center": node.format === "center",
+                    "text-right": node.format === "right",
+                    "text-justify": node.format === "justify",
+                  })}
                   // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
                   role="checkbox"
                   tabIndex={-1}
@@ -138,7 +167,15 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
               );
             } else {
               return (
-                <li className={hasSubLists ? "list-none" : "list-inside"} value={node?.value}>
+                <li
+                  className={cn(hasSubLists ? "list-none" : "list-inside", {
+                    "text-left": node.format === "left",
+                    "text-center": node.format === "center",
+                    "text-right": node.format === "right",
+                    "text-justify": node.format === "justify",
+                  })}
+                  value={node?.value}
+                >
                   {serializedChildren}
                 </li>
               );
@@ -146,7 +183,15 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           }
           case "quote": {
             return (
-              <blockquote className="col-start-2" key={`text-${index}`}>
+              <blockquote
+                className={cn("col-start-2", {
+                  "text-left": node.format === "left",
+                  "text-center": node.format === "center",
+                  "text-right": node.format === "right",
+                  "text-justify": node.format === "justify",
+                })}
+                key={`text-${index}`}
+              >
                 {serializedChildren}
               </blockquote>
             );
@@ -159,6 +204,12 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                 key={`text-${index}`}
                 target={fields?.newTab ? "_blank" : "_self"}
                 href={fields.url}
+                className={cn({
+                  "text-left": node.format === "left",
+                  "text-center": node.format === "center",
+                  "text-right": node.format === "right",
+                  "text-justify": node.format === "justify",
+                })}
               >
                 {serializedChildren}
               </Link>
