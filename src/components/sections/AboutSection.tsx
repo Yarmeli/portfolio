@@ -10,8 +10,12 @@ interface AboutSectionProps {
 }
 
 export function AboutSection({ about }: AboutSectionProps) {
-  const avatar = about?.avatar as Media;
-  const locationFlag = about?.locationFlag as Media;
+  if (!about) {
+    return null;
+  }
+
+  const avatar = about.avatar as Media;
+  const locationFlag = about.locationFlag as Media;
 
   return (
     <section className="py-24 sm:py-32" id="about">
