@@ -110,7 +110,7 @@ export interface Media {
 export interface Project {
   id: number;
   title: string;
-  shortDescription?: string | null;
+  shortDescription: string;
   description: {
     root: {
       type: string;
