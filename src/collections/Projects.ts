@@ -28,7 +28,7 @@ export const Projects: CollectionConfig = {
     {
       name: "shortDescription",
       type: "textarea",
-      // required: true,
+      required: true,
       label: "Short Description",
     },
     {
