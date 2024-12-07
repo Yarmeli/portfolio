@@ -54,11 +54,5 @@ export const Experience: CollectionConfig = {
       type: "richText",
       required: true,
     },
-    {
-      name: "technologies",
-      type: "relationship",
-      relationTo: "skills",
-      hasMany: true,
-    },
   ],
 };
