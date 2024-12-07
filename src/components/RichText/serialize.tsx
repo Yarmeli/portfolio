@@ -28,35 +28,35 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
         }
 
         if (node.type === "text") {
-          let text = <React.Fragment key={index}>{node.text}</React.Fragment>;
+          let text = <React.Fragment key={`text-${index}`}>{node.text}</React.Fragment>;
           if (node.format & IS_BOLD) {
-            text = <strong key={index}>{text}</strong>;
+            text = <strong key={`text-${index}`}>{text}</strong>;
           }
           if (node.format & IS_ITALIC) {
-            text = <em key={index}>{text}</em>;
+            text = <em key={`text-${index}`}>{text}</em>;
           }
           if (node.format & IS_STRIKETHROUGH) {
             text = (
-              <span key={index} style={{ textDecoration: "line-through" }}>
+              <span key={`text-${index}`} style={{ textDecoration: "line-through" }}>
                 {text}
               </span>
             );
           }
           if (node.format & IS_UNDERLINE) {
             text = (
-              <span key={index} style={{ textDecoration: "underline" }}>
+              <span key={`text-${index}`} style={{ textDecoration: "underline" }}>
                 {text}
               </span>
             );
           }
           if (node.format & IS_CODE) {
-            text = <code key={index}>{node.text}</code>;
+            text = <code key={`text-${index}`}>{node.text}</code>;
           }
           if (node.format & IS_SUBSCRIPT) {
-            text = <sub key={index}>{text}</sub>;
+            text = <sub key={`text-${index}`}>{text}</sub>;
           }
           if (node.format & IS_SUPERSCRIPT) {
-            text = <sup key={index}>{text}</sup>;
+            text = <sup key={`text-${index}`}>{text}</sup>;
           }
 
           return text;
@@ -86,11 +86,11 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
 
         switch (node.type) {
           case "linebreak": {
-            return <br className="col-start-2" key={index} />;
+            return <br className="col-start-2" key={`text-${index}`} />;
           }
           case "paragraph": {
             return (
-              <p className="col-start-2" key={index}>
+              <p className="col-start-2" key={`text-${index}`}>
                 {serializedChildren}
               </p>
             );
@@ -98,7 +98,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           case "heading": {
             const Tag = node?.tag;
             return (
-              <Tag className="col-start-2" key={index}>
+              <Tag className="col-start-2" key={`text-${index}`}>
                 {serializedChildren}
               </Tag>
             );
@@ -106,7 +106,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           case "list": {
             const Tag = node?.tag;
             return (
-              <Tag className="list col-start-2" key={index}>
+              <Tag className="list col-start-2" key={`text-${index}`}>
                 {serializedChildren}
               </Tag>
             );
@@ -146,7 +146,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           }
           case "quote": {
             return (
-              <blockquote className="col-start-2" key={index}>
+              <blockquote className="col-start-2" key={`text-${index}`}>
                 {serializedChildren}
               </blockquote>
             );
@@ -155,14 +155,18 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
             const fields = node.fields;
 
             return (
-              <Link key={index} target={fields?.newTab ? "_blank" : "_self"} href={fields.url}>
+              <Link
+                key={`text-${index}`}
+                target={fields?.newTab ? "_blank" : "_self"}
+                href={fields.url}
+              >
                 {serializedChildren}
               </Link>
             );
           }
 
           case "horizontalrule": {
-            return <hr className="col-start-2" key={index} />;
+            return <hr className="col-start-2" key={`text-${index}`} />;
           }
 
           default:
