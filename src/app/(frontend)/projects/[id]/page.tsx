@@ -27,14 +27,13 @@ async function getProject(id: string) {
   return projects.docs[0] as Project;
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const project = await getProject(id);
   return { title: `Hamza Asif • ${project?.title}`, description: project?.shortDescription };
 }
 
-export default async function ProjectPage({ params }: { params: { id: string } }) {
-  // Next 15 requires to await params
+export default async function ProjectPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const project = await getProject(id);
 
