@@ -9,6 +9,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPayload } from "payload";
 
+export async function generateStaticParams() {
+  const payload = await getPayload({ config: configPromise });
+  const projects = await payload.find({ collection: "projects" });
+  return projects.docs.map((project) => ({ id: project.id }));
+}
+
 async function getProject(id: string) {
   const payload = await getPayload({ config: configPromise });
   const projects = await payload.find({
