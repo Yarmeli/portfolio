@@ -1,4 +1,4 @@
-import { anyone, authenticated } from "@/access";
+import { authenticated, authenticatedOrPublished } from "@/access";
 import { revalidateProjectsPage } from "@/hooks/revalidateProjectsPage";
 import type { CollectionConfig } from "payload";
 
@@ -9,7 +9,7 @@ export const Projects: CollectionConfig = {
   },
   access: {
     create: authenticated,
-    read: anyone,
+    read: authenticatedOrPublished,
     update: authenticated,
     delete: authenticated,
   },
