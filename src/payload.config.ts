@@ -27,6 +27,7 @@ export default buildConfig({
   collections: [Users, Media, Projects, Skills, Experience, About, Contact],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
+  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || "http://localhost:3000",
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
