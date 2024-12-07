@@ -13,7 +13,8 @@
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "ci": "payload migrate && pnpm build"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
