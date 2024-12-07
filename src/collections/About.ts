@@ -1,4 +1,5 @@
 import { anyone, authenticated } from "@/access";
+import { revalidateHomePage } from "@/hooks/revalidateHomePage";
 import type { CollectionConfig } from "payload";
 
 export const About: CollectionConfig = {
@@ -11,6 +12,12 @@ export const About: CollectionConfig = {
     read: anyone,
     update: authenticated,
     delete: authenticated,
+  },
+  versions: {
+    drafts: { autosave: true },
+  },
+  hooks: {
+    afterChange: [revalidateHomePage],
   },
   fields: [
     {

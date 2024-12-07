@@ -1,4 +1,5 @@
 import { anyone, authenticated } from "@/access";
+import { revalidateProjectsPage } from "@/hooks/revalidateProjectsPage";
 import type { CollectionConfig } from "payload";
 
 export const Projects: CollectionConfig = {
@@ -11,6 +12,12 @@ export const Projects: CollectionConfig = {
     read: anyone,
     update: authenticated,
     delete: authenticated,
+  },
+  versions: {
+    drafts: { autosave: true },
+  },
+  hooks: {
+    afterChange: [revalidateProjectsPage],
   },
   fields: [
     {
