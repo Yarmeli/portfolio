@@ -15,6 +15,7 @@ async function getProjects() {
   const projects = await payload.find({
     collection: "projects",
     sort: "-createdAt",
+    draft: false,
   });
   return projects.docs as Project[];
 }
