@@ -1,6 +1,7 @@
 "use client";
 
 import { Media } from "@/payload-types";
+import Image from "next/image";
 import { useState } from "react";
 
 interface ImageGalleryProps {
@@ -16,9 +17,10 @@ export function ImageGallery({ thumbnail, images, title }: ImageGalleryProps) {
   return (
     <div className="mb-12">
       <div className="relative mb-4 h-[500px] w-full overflow-hidden rounded-lg">
-        <img
+        <Image
           src={selectedImage.url!}
           alt={selectedImage.alt || title}
+          fill
           className="h-full w-full object-cover"
         />
       </div>
@@ -34,7 +36,12 @@ export function ImageGallery({ thumbnail, images, title }: ImageGalleryProps) {
                 : "hover:ring-2 hover:ring-primary hover:ring-offset-2"
             }`}
           >
-            <img src={image.url!} alt={image.alt || title} className="h-full w-full object-cover" />
+            <Image
+              src={image.url!}
+              alt={image.alt || title}
+              fill
+              className="h-full w-full object-cover"
+            />
           </div>
         ))}
       </div>

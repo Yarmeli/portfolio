@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Media, Project, Skill } from "@/payload-types";
 import configPromise from "@payload-config";
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { getPayload } from "payload";
 
@@ -35,9 +36,10 @@ export default async function ProjectsPage() {
             >
               {thumbnail && thumbnail.url && (
                 <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-lg">
-                  <img
+                  <Image
                     src={thumbnail.url}
                     alt={project.title}
+                    fill
                     className="h-full w-full object-cover"
                   />
                 </div>

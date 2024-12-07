@@ -1,5 +1,6 @@
 import { fadeIn, staggerContainer } from "@/lib/animations";
 import { Media, Project, Skill } from "@/payload-types";
+import Image from "next/image";
 import Link from "next/link";
 import { MotionWrapper } from "../MotionWrapper";
 import { Badge } from "../ui/badge";
@@ -43,7 +44,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
                 <Link href={`/projects/${project.id}`}>
                   <div className="p-2">
                     {thumbnail && thumbnail.url && (
-                      <img
+                      <Image
                         src={thumbnail.url}
                         alt={project.title}
                         className="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
