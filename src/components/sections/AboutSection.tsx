@@ -46,7 +46,7 @@ export function AboutSection({ about }: AboutSectionProps) {
         </div>
         <h2 className="mb-8 text-5xl font-bold tracking-tight sm:text-7xl">{about.title}</h2>
         <div className="mt-2 text-sm text-muted-foreground">
-          <RichText content={about.bio} enableGutter={false} />
+          <RichText content={about.bio} className="max-w-3xl" />
         </div>
         <div className="mt-6 flex flex-wrap gap-4">
           {about.socialLinks?.map((socialLink) => (
