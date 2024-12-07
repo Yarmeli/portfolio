@@ -1,4 +1,5 @@
 import { AboutSection } from "@/components/sections/AboutSection";
+import { ContactSection } from "@/components/sections/ContactSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { FeaturedProjects } from "@/components/sections/FeaturedProjects";
 import { SkillsSection } from "@/components/sections/SkillsSection";
@@ -37,6 +38,7 @@ export default async function Home() {
       <SkillsSection skills={skills} />
       <ExperienceSection experiences={experiences} />
       <FeaturedProjects projects={projects} />
+      <ContactSection />
     </div>
   );
 }

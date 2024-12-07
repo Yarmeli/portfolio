@@ -7,6 +7,7 @@ import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { buildConfig } from "payload";
 import sharp from "sharp";
 import { About } from "./collections/About";
+import { Contact } from "./collections/Contact";
 import { Experience } from "./collections/Experience";
 import { Media } from "./collections/Media";
 import { Projects } from "./collections/Projects";
@@ -23,7 +24,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Projects, Skills, Experience, About],
+  collections: [Users, Media, Projects, Skills, Experience, About, Contact],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
