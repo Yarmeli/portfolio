@@ -15,8 +15,8 @@ export function ImageGallery({ thumbnail, images, title }: ImageGalleryProps) {
   const allImages = [thumbnail, ...(images || [])];
 
   return (
-    <div className="mb-12">
-      <div className="relative mb-4 h-[500px] w-full overflow-hidden rounded-lg">
+    <div className="mb-8 sm:mb-12">
+      <div className="relative mb-4 h-[300px] w-full overflow-hidden rounded-lg sm:h-[400px] md:h-[500px]">
         <Image
           src={selectedImage.url!}
           alt={selectedImage.alt || title}
@@ -25,7 +25,7 @@ export function ImageGallery({ thumbnail, images, title }: ImageGalleryProps) {
         />
       </div>
 
-      <div className="grid grid-cols-6 gap-4">
+      <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 sm:gap-4 md:grid-cols-6">
         {allImages.map((image) => (
           <div
             key={image.id}

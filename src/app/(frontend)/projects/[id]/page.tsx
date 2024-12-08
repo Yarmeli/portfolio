@@ -55,11 +55,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
   const images = project.images as Media[];
 
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto px-4 py-8 sm:py-16">
       <article className="mx-auto max-w-4xl">
         <Link
           href="/projects"
-          className="mb-8 inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
+          className="mb-4 inline-flex items-center text-sm text-muted-foreground hover:text-foreground sm:mb-8"
         >
           ← Back to Projects
         </Link>
@@ -69,18 +69,21 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mb-12"
+          className="mb-8 sm:mb-12"
         >
           <MotionWrapper variants={staggerChildren}>
-            <h1 className="mb-6 text-4xl font-bold">{project.title}</h1>
+            <h1 className="mb-4 text-3xl font-bold sm:mb-6 sm:text-4xl">{project.title}</h1>
           </MotionWrapper>
           <MotionWrapper variants={staggerChildren}>
             {/* Technologies */}
-            <div className="mb-6 flex flex-wrap gap-2">
+            <div className="mb-4 flex flex-wrap gap-2 sm:mb-6">
               {project.technologies?.map((technology) => {
                 const skill = technology as Skill;
                 return (
-                  <Badge key={`skill-project-${skill.id}`} className="px-3 py-1 text-sm">
+                  <Badge
+                    key={`skill-project-${skill.id}`}
+                    className="px-2 py-1 text-xs sm:px-3 sm:text-sm"
+                  >
                     {skill.name}
                   </Badge>
                 );
@@ -89,8 +92,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
           </MotionWrapper>
 
           <MotionWrapper variants={staggerChildren}>
-            {/* Short Description */}
-            <p className="text-lg">{project.shortDescription}</p>
+            <p className="text-base sm:text-lg">{project.shortDescription}</p>
           </MotionWrapper>
         </MotionWrapper>
 
@@ -104,12 +106,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
           <RichText content={project.description} enableGutter={false} />
         </div>
 
-        <div className="mt-8 flex gap-4">
+        <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:gap-4">
           {project.projectUrl && (
             <Link
               href={project.projectUrl}
               target="_blank"
-              className="rounded-md bg-primary px-6 py-2 text-sm font-semibold text-primary-foreground"
+              className="w-full rounded-md bg-primary px-4 py-2 text-center text-sm font-semibold text-primary-foreground sm:w-auto sm:px-6"
             >
               Open Live Version
             </Link>
@@ -118,7 +120,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
             <Link
               href={project.githubUrl}
               target="_blank"
-              className="rounded-md border px-6 py-2 text-sm font-semibold"
+              className="w-full rounded-md border px-4 py-2 text-center text-sm font-semibold sm:w-auto sm:px-6"
             >
               View Code
             </Link>
