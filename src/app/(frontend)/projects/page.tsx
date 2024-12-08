@@ -25,19 +25,19 @@ export default async function ProjectsPage() {
   const projects = await getProjects();
 
   return (
-    <div className="container mx-auto px-4 py-16">
-      <h1 className="mb-12 text-3xl font-bold">All Projects</h1>
-      <div className="grid gap-4">
+    <div className="container mx-auto px-4 py-8 sm:py-16">
+      <h1 className="mb-8 text-2xl font-bold sm:mb-12 sm:text-3xl">All Projects</h1>
+      <div className="grid gap-4 sm:gap-6">
         {projects.map((project) => {
           const thumbnail = project.thumbnail as Media;
           return (
             <Link
               href={`/projects/${project.id}`}
               key={`project-${project.id}`}
-              className="group flex items-center gap-6 rounded-lg border p-4 transition-colors hover:bg-muted"
+              className="group flex flex-col gap-4 rounded-lg border p-4 transition-colors hover:bg-muted sm:flex-row sm:items-center sm:gap-6"
             >
               {thumbnail && thumbnail.url && (
-                <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-lg">
+                <div className="relative aspect-video w-full overflow-hidden rounded-lg sm:h-24 sm:w-24 sm:flex-shrink-0">
                   <Image
                     src={thumbnail.url}
                     alt={project.title}
@@ -47,14 +47,21 @@ export default async function ProjectsPage() {
                 </div>
               )}
               <div className="flex-grow">
-                <h2 className="text-xl font-semibold">{project.title}</h2>
+                <h2 className="text-lg font-semibold sm:text-xl">{project.title}</h2>
                 <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">
                   {project.shortDescription}
                 </p>
-                <div className="mt-4 flex gap-2">
+                <div className="mt-4 flex flex-wrap gap-2">
                   {project.technologies?.map((technology) => {
                     const skill = technology as Skill;
-                    return <Badge key={`skill-projects-${skill.id}`}>{skill.name}</Badge>;
+                    return (
+                      <Badge
+                        key={`skill-projects-${skill.id}`}
+                        className="px-2 py-1 text-xs sm:text-sm"
+                      >
+                        {skill.name}
+                      </Badge>
+                    );
                   })}
                 </div>
               </div>
