@@ -21,7 +21,7 @@ export function ImageGallery({ thumbnail, images, title }: ImageGalleryProps) {
           src={selectedImage.url!}
           alt={selectedImage.alt || title}
           fill
-          className="object-fit h-full w-full"
+          className="h-full w-full object-contain"
         />
       </div>
 
