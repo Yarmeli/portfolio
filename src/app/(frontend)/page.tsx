@@ -13,7 +13,7 @@ async function getHomeData() {
   const [aboutData, experiencesData, skillsData, projectsData] = await Promise.all([
     payload.find({ collection: "about", limit: 1 }),
     payload.find({ collection: "experience", sort: "-startDate" }),
-    payload.find({ collection: "skills", sort: "+updatedAt" }),
+    payload.find({ collection: "skills", sort: "+updatedAt", limit: 25 }),
     payload.find({
       collection: "projects",
       sort: "-createdAt",
