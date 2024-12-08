@@ -11,13 +11,22 @@ async function getHomeData() {
   const payload = await getPayload({ config: configPromise });
 
   const [aboutData, experiencesData, skillsData, projectsData] = await Promise.all([
-    payload.find({ collection: "about", limit: 1 }),
-    payload.find({ collection: "experience", sort: "-startDate" }),
-    payload.find({ collection: "skills", sort: "+updatedAt", limit: 25 }),
+    payload.find({ collection: "about", limit: 1, where: { _status: { equals: "published" } } }),
+    payload.find({
+      collection: "experience",
+      sort: "-startDate",
+      where: { _status: { equals: "published" } },
+    }),
+    payload.find({
+      collection: "skills",
+      sort: "+updatedAt",
+      limit: 25,
+      where: { _status: { equals: "published" } },
+    }),
     payload.find({
       collection: "projects",
       sort: "-createdAt",
-      where: { featured: { equals: true } },
+      where: { featured: { equals: true }, _status: { equals: "published" } },
     }),
   ]);
 
