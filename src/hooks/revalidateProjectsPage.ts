@@ -13,6 +13,7 @@ export const revalidateProjectsPage: CollectionAfterChangeHook<Project> = ({
     payload.logger.info(`Revalidating project at path: ${path}`);
 
     revalidatePath(path);
+    revalidatePath("/projects");
 
     if (doc.featured) {
       payload.logger.info(`Revalidating home page since featured project was updated`);
@@ -27,6 +28,7 @@ export const revalidateProjectsPage: CollectionAfterChangeHook<Project> = ({
     payload.logger.info(`Revalidating old project at path: ${oldPath}`);
 
     revalidatePath(oldPath);
+    revalidatePath("/projects");
   }
 
   return doc;
