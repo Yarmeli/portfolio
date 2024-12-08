@@ -11,7 +11,11 @@ import { getPayload } from "payload";
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise });
-  const projects = await payload.find({ collection: "projects" });
+  const projects = await payload.find({
+    collection: "projects",
+    where: { _status: { equals: "published" } },
+    limit: 100,
+  });
   return projects.docs.map((project) => ({ id: project.id }));
 }
 
