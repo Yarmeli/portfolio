@@ -65,26 +65,6 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
                         return <Badge key={`skill-featured-${skill.id}`}>{skill.name}</Badge>;
                       })}
                     </div>
-                    <div className="mt-4 flex gap-2">
-                      {project.projectUrl && (
-                        <Link
-                          href={project.projectUrl}
-                          target="_blank"
-                          className="text-sm text-primary hover:underline"
-                        >
-                          Live Demo
-                        </Link>
-                      )}
-                      {project.githubUrl && (
-                        <Link
-                          href={project.githubUrl}
-                          target="_blank"
-                          className="text-sm text-primary hover:underline"
-                        >
-                          GitHub
-                        </Link>
-                      )}
-                    </div>
                   </div>
                 </Link>
               </MotionWrapper>
