@@ -16,7 +16,7 @@ export async function generateStaticParams() {
     where: { _status: { equals: "published" } },
     limit: 100,
   });
-  return projects.docs.map((project) => ({ id: project.id }));
+  return projects.docs.map((project) => ({ id: project.id.toString() }));
 }
 
 async function getProject(id: string) {
