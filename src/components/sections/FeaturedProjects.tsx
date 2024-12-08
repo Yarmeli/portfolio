@@ -59,7 +59,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
                     <p className="mt-4 text-center text-sm text-muted-foreground">
                       {project.shortDescription}
                     </p>
-                    <div className="mt-4 flex gap-2">
+                    <div className="mt-4 flex flex-wrap gap-2">
                       {project.technologies?.map((technology) => {
                         const skill = technology as Skill;
                         return <Badge key={`skill-featured-${skill.id}`}>{skill.name}</Badge>;
