@@ -175,7 +175,6 @@ export interface Experience {
     };
     [k: string]: unknown;
   };
-  technologies?: (number | Skill)[] | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -383,7 +382,6 @@ export interface ExperienceSelect<T extends boolean = true> {
   startDate?: T;
   endDate?: T;
   description?: T;
-  technologies?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
