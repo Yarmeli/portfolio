@@ -111,7 +111,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
               target="_blank"
               className="rounded-md bg-primary px-6 py-2 text-sm font-semibold text-primary-foreground"
             >
-              View Project
+              Open Live Version
             </Link>
           )}
           {project.githubUrl && (
