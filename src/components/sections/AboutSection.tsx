@@ -28,7 +28,7 @@ export function AboutSection({ about }: AboutSectionProps) {
       >
         {avatar && avatar.url && (
           <Avatar className="mb-6 h-32 w-32">
-            <AvatarImage src={avatar.url} alt={avatar.alt} />
+            <AvatarImage src={avatar.url} alt={avatar.alt} loading="eager" />
             <AvatarFallback>{avatar.alt}</AvatarFallback>
           </Avatar>
         )}
@@ -38,7 +38,7 @@ export function AboutSection({ about }: AboutSectionProps) {
         <div className="mb-6 flex items-center gap-2">
           {locationFlag && locationFlag.url && (
             <Avatar className="h-6 w-12 rounded-sm">
-              <AvatarImage src={locationFlag.url} alt={locationFlag.alt} />
+              <AvatarImage src={locationFlag.url} alt={locationFlag.alt} loading="eager" />
               <AvatarFallback>{locationFlag.alt}</AvatarFallback>
             </Avatar>
           )}{" "}

@@ -43,6 +43,7 @@ export default async function ProjectsPage() {
                     alt={project.title}
                     fill
                     className="h-full w-full object-contain"
+                    priority
                   />
                 </div>
               )}

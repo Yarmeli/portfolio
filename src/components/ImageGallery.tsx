@@ -22,6 +22,7 @@ export function ImageGallery({ thumbnail, images, title }: ImageGalleryProps) {
           alt={selectedImage.alt || title}
           fill
           className="h-full w-full object-contain"
+          priority
         />
       </div>
 
@@ -41,6 +42,7 @@ export function ImageGallery({ thumbnail, images, title }: ImageGalleryProps) {
               alt={image.alt || title}
               fill
               className="h-full w-full object-cover"
+              priority
             />
           </div>
         ))}
