@@ -42,7 +42,7 @@ export default async function ProjectsPage() {
                     src={thumbnail.url}
                     alt={project.title}
                     fill
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-contain"
                   />
                 </div>
               )}
