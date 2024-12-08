@@ -45,7 +45,7 @@ export function AboutSection({ about }: AboutSectionProps) {
           <span className="text-lg text-muted-foreground">Based in {about.location}</span>
         </div>
         <div className="mb-8 flex items-center gap-2">
-          <h1 className="text-5xl font-bold tracking-tight sm:text-7xl">{about.name}</h1>
+          <h1 className="text-5xl font-bold tracking-tight sm:text-7xl">{about.title}</h1>
         </div>
         <div className="mt-2 text-sm text-muted-foreground">
           <RichText content={about.bio} className="max-w-3xl" />
