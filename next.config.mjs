@@ -7,7 +7,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: process.env.PAYLOAD_PUBLIC_SERVER_URL.replace("https://", ""),
+        hostname: process.env.NEXT_PUBLIC_PAYLOAD_SERVER_URL.replace("https://", ""),
       },
       {
         hostname: "localhost",
