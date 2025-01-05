@@ -19,13 +19,13 @@ async function getHomeData() {
     }),
     payload.find({
       collection: "skills",
-      sort: "+updatedAt",
+      sort: "order",
       limit: 25,
       where: { _status: { equals: "published" } },
     }),
     payload.find({
       collection: "projects",
-      sort: "-createdAt",
+      sort: "order",
       where: { featured: { equals: true }, _status: { equals: "published" } },
     }),
   ]);

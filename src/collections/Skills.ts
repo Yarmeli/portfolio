@@ -6,6 +6,7 @@ export const Skills: CollectionConfig = {
   slug: "skills",
   admin: {
     useAsTitle: "name",
+    defaultColumns: ["name", "category", "order"],
   },
   access: {
     create: authenticated,
@@ -43,6 +44,15 @@ export const Skills: CollectionConfig = {
         { label: "Languages", value: "languages" },
       ],
       required: true,
+    },
+    {
+      name: "order",
+      type: "number",
+      admin: {
+        description: "Use this field to control the display order (lower numbers appear first)",
+        position: "sidebar",
+      },
+      defaultValue: 999,
     },
   ],
 };

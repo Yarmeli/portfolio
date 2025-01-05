@@ -27,6 +27,9 @@ async function getProject(id: string) {
       id: {
         equals: id,
       },
+      _status: {
+        equals: "published",
+      },
     },
   });
 

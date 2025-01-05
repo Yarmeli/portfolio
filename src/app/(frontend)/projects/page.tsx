@@ -14,7 +14,7 @@ async function getProjects() {
   const payload = await getPayload({ config: configPromise });
   const projects = await payload.find({
     collection: "projects",
-    sort: "-createdAt",
+    sort: "order",
     where: { _status: { equals: "published" } },
     limit: 100,
   });
