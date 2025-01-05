@@ -15,7 +15,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className="min-h-screen">
         <PlausibleProvider
-          domain={process.env.NEXT_PUBLIC_PAYLOAD_SERVER_URL!}
+          domain={
+            process.env.NEXT_PUBLIC_PAYLOAD_SERVER_URL?.startsWith("https://")
+              ? process.env.NEXT_PUBLIC_PAYLOAD_SERVER_URL!.slice(8)
+              : process.env.NEXT_PUBLIC_PAYLOAD_SERVER_URL!
+          }
           // I'm using a custom-domain and self-hosting plausible
           // buuuuut if this doesn't apply to you, feel free to adjust this
           customDomain={process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN}
