@@ -25,10 +25,14 @@ export const revalidateProjectsPage: CollectionAfterChangeHook<Project> = ({
   if (previousDoc?._status === "published" && doc._status !== "published") {
     const oldPath = `/projects/${previousDoc.id}`;
 
-    payload.logger.info(`Revalidating old project at path: ${oldPath}`);
+    payload.logger.info(`Revalidating old project at path: ${oldPath} since it was removed`);
 
     revalidatePath(oldPath);
     revalidatePath("/projects");
+    if (previousDoc.featured) {
+      payload.logger.info(`Revalidating home page since old featured project was removed`);
+      revalidatePath("/");
+    }
   }
 
   return doc;
