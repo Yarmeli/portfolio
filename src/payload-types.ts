@@ -132,6 +132,7 @@ export interface Project {
   githubUrl?: string | null;
   technologies?: (number | Skill)[] | null;
   featured?: boolean | null;
+  order?: number | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -145,6 +146,7 @@ export interface Skill {
   name: string;
   icon: number | Media;
   category: 'frontend' | 'backend' | 'programming' | 'devops' | 'testing' | 'languages';
+  order?: number | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -355,6 +357,7 @@ export interface ProjectsSelect<T extends boolean = true> {
   githubUrl?: T;
   technologies?: T;
   featured?: T;
+  order?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -367,6 +370,7 @@ export interface SkillsSelect<T extends boolean = true> {
   name?: T;
   icon?: T;
   category?: T;
+  order?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
