@@ -33,12 +33,12 @@
     "framer-motion": "^12.0.0-alpha.1",
     "graphql": "^16.8.1",
     "lucide-react": "^0.462.0",
-    "next": "15.0.5",
+    "next": "^15.4.11",
     "next-plausible": "^3.12.4",
     "next-themes": "^0.4.3",
     "payload": "latest",
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
     "react-hook-form": "^7.54.0",
     "sharp": "0.32.6",
     "tailwind-merge": "^2.5.5",
@@ -54,7 +54,7 @@
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
     "autoprefixer": "^10.4.20",
     "eslint": "^8",
-    "eslint-config-next": "15.0.3",
+    "eslint-config-next": "^15.4.11",
     "postcss": "^8.4.49",
     "prettier": "^3.4.1",
     "prettier-plugin-tailwindcss": "^0.6.9",
@@ -68,20 +68,12 @@
     "overrides": {
       "@types/react": "npm:types-react@19.0.0-rc.1",
       "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
-      "next@>=15.0.0 <15.1.2": ">=15.1.2",
       "esbuild@<=0.24.2": ">=0.25.0",
-      "next@>=15.0.0 <15.2.2": ">=15.2.2",
-      "next@>=15.0.4-canary.51 <15.1.8": ">=15.1.8",
-      "next@>=15.0.0 <=15.4.4": ">=15.4.5",
-      "next@>=15.0.0-canary.0 <15.4.7": ">=15.4.7",
-      "next@>=15.0.0 <15.1.6": ">=15.1.6",
-      "next@>=15.0.0 <15.2.3": ">=15.2.3",
-      "nodemailer@<=7.0.10": ">=7.0.11"
+      "nodemailer@<=7.0.10": ">=7.0.11",
+      "lodash@>=4.0.0 <=4.17.22": ">=4.17.23",
+      "undici@>=7.0.0 <7.18.2": ">=7.18.2",
+      "eslint@<9.26.0": ">=9.26.0"
     }
-  },
-  "overrides": {
-    "@types/react": "npm:types-react@19.0.0-rc.1",
-    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
   },
   "packageManager": "pnpm@9.15.2+sha512.93e57b0126f0df74ce6bff29680394c0ba54ec47246b9cf321f0121d8d9bb03f750a705f24edc3c1180853afd7c2c3b94196d0a3d53d3e069d9e2793ef11f321"
 }
